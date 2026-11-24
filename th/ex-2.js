@@ -7,7 +7,6 @@
     - Function นี้จะนำ employeeInfo มาตรวจสอบแล้วเลือกเฉพาะคนที่อยู่ในแผนกที่จะเพิ่มโบนัสให้ เพื่อเพิ่มโบนัสตามจำนวนเงินที่ระบุไว้ แล้วนำมาคำนวณว่าเจ้าของบริษัทจะต้องใช้เงินทั้งหมดเท่าไร เพื่อจ่ายเงินเดือนเดือนนั้นให้พนักงานในแผนกที่กำหนด จากนั้นให้ Return ค่าออกมา
     - เมื่อ Algorithm นี้ทำงาน จะต้องเห็นผลลัพธ์ด้านล่าง
 */
-
 // Start coding here
 
 const employeeInfo = [
@@ -60,6 +59,11 @@ const employeeInfo = [
     salary: 34000,
   },
 ];
+
+const addBonusForSelectedDepartment = (employeeInfo, bonus, department) => employeeInfo
+      .filter((employee) => employee.department === department)
+      .map((employee) => employee.salary + bonus)
+      .reduce((total, result) => total + result, 0)
 
 console.log(addBonusForSelectedDepartment(employeeInfo, 5000, "HR")); // 69000
 console.log(addBonusForSelectedDepartment(employeeInfo, 1000, "Operations")); // 67000
